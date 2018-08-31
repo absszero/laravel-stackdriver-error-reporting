@@ -7,11 +7,18 @@ use Google\Cloud\Logging\LoggingClient;
 
 class ErrorReporting
 {
-    public function __construct()
+    public function __construct($metadataProvider = null)
     {
         $logName = config('error_reporting.log_name');
         $loggingClient = new LoggingClient(config('error_reporting.LoggingClient'));
-        Bootstrap::$psrLogger = $loggingClient->psrLogger($logName, $this->psrLoggerOptions());
+
+        $options = config('error_reporting.PsrLogger');
+        if (is_null($metadataProvider)) {
+            $metadataProvider = $this->setCustomMetadataProvider(config('error_reporting'));
+        }
+        $options['metadataProvider'] = $metadataProvider;
+
+        Bootstrap::$psrLogger = $loggingClient->psrLogger($logName, $options);
     }
 
     public function report($exception)
@@ -19,14 +26,12 @@ class ErrorReporting
         Bootstrap::exceptionHandler($exception);
     }
 
-    protected function psrLoggerOptions()
+    protected function setCustomMetadataProvider($config)
     {
-        $options = config('error_reporting.PsrLogger');
-        $metadataProvider = array_get($options, 'metadataProvider');
-        if (is_callable($metadataProvider)) {
-            $options['metadataProvider'] = $metadataProvider(config('error_reporting'));
-        }
-
-        return $options;
+        return new MetadataProvider(
+            $config['LoggingClient']['projectId'],
+            $config['serviceId'],
+            $config['versionId']
+        );
     }
 }

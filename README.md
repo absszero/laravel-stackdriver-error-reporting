@@ -6,7 +6,7 @@
 2. `php artisan vendor:publish --provider=Absszero\ErrorReportingServiceProvider`
 
 ## Configuration
-1. get [Authentication](https://cloud.google.com/docs/authentication/getting-started) and edit `.env`
+1. get [service account credentials](https://cloud.google.com/docs/authentication/getting-started) and edit `.env`
 ```
 GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
 ```
@@ -17,7 +17,7 @@ GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
         public function report(Exception $exception)
         {
             parent::report($exception);
-    
+
             if ($this->shouldReport($exception)) {
                 (new \Absszero\ErrorReporting::class)->report($exception);
             }

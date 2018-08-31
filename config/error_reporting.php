@@ -20,13 +20,6 @@ return [
         'transport' => null
     ],
     'PsrLogger' => [
-        'metadataProvider' => function ($config) {
-            return new \Absszero\MetadataProvider(
-                $config['LoggingClient']['projectId'],
-                $config['serviceId'],
-                $config['versionId']
-            );
-        },
         // Determines whether or not to use background batching.
         'batchEnabled' => true,
         //  Whether or not to output debug information.
