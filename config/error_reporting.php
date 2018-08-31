@@ -21,7 +21,7 @@ return [
     ],
     'PsrLogger' => [
         'metadataProvider' => function ($config) {
-            return new \StackDriverLogger\MetadataProvider(
+            return new \Absszero\MetadataProvider(
                 $config['LoggingClient']['projectId'],
                 $config['serviceId'],
                 $config['versionId']
