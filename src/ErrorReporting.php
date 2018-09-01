@@ -7,6 +7,8 @@ use Google\Cloud\Logging\LoggingClient;
 
 class ErrorReporting
 {
+    protected $reportCallable = [Bootstrap::class, 'exceptionHandler'];
+
     public function __construct($metadataProvider = null)
     {
         $logName = config('error_reporting.log_name');
@@ -21,9 +23,14 @@ class ErrorReporting
         Bootstrap::$psrLogger = $loggingClient->psrLogger($logName, $options);
     }
 
+    public function setReportCallable($callable)
+    {
+        $this->reportCallable = $callable;
+    }
+
     public function report($exception)
     {
-        Bootstrap::exceptionHandler($exception);
+        call_user_func($this->reportCallable, $exception);
     }
 
     protected function setCustomMetadataProvider($config)

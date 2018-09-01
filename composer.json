@@ -3,6 +3,8 @@
     "description": "Stackdriver Error Reporting for Laravel",
     "type": "laravel",
     "require": {
+        "php": ">=5.4",
+        "illuminate/support": "~5.0",
         "google/cloud-error-reporting": "^0.11"
     },
 
@@ -15,6 +17,16 @@
     "autoload": {
         "psr-4": {
             "Absszero\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Absszero\\ErrorReportingServiceProvider\\ServiceProvider"
+            ]
         }
     }
 }
