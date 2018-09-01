@@ -11,7 +11,7 @@ class ErrorReporting
 
     public function __construct($metadataProvider = null)
     {
-        $logName = config('error_reporting.log_name');
+        $logName = config('error_reporting.logName');
         $loggingClient = new LoggingClient(config('error_reporting.LoggingClient'));
 
         $options = config('error_reporting.PsrLogger');

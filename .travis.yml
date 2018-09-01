@@ -27,4 +27,4 @@ before_install:
 
 install: composer update --prefer-source --no-interaction -v
 
-script: vendor/bin/phpunit --debug -c phpunit.xml --coverage-clover=coverage.clover
+script: vendor/bin/phpunit --debug -c phpunit.xml

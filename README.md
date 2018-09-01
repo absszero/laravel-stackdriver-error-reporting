@@ -1,5 +1,11 @@
 # Stackdriver Error Reporting for Laravel
 
+[![Build Status](https://travis-ci.org/absszero/laravel-stackdriver-error-reporting.svg?branch=master)](https://travis-ci.org/absszero/laravel-stackdriver-error-reporting)
+
+## Requirements
+
+Laravel `5.1` ~ `5.6`
+
 ## Installation
 
 1. `composer require absszero/laravel-stackdriver-error-reporting`
@@ -43,4 +49,4 @@ TODO: Write credits
 
 ## License
 
-TODO: Write license
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

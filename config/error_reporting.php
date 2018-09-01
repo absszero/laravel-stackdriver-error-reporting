@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'log_name' => config('app.name'),
+    'logName' => config('app.name'),
     'serviceId' => config('app.name'),
     'versionId' => null,
     'LoggingClient' => [
