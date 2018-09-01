@@ -1,7 +1,7 @@
 language: php
 
 env:
-  - ILLUMINATE_VERSION=5.0.*
+  - ILLUMINATE_VERSION=5.1.*
 
 cache:
   directories:
@@ -9,8 +9,6 @@ cache:
 
 matrix:
   include:
-    - php: 5.4
-      env: ILLUMINATE_VERSION=5.0.*
     - php: 5.5.9
       env: ILLUMINATE_VERSION=5.1.*
     - php: 5.5.9
@@ -29,6 +27,6 @@ matrix:
 before_install:
   - composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update -v
 
-install: composer update --prefer-source --no-interaction --dev -v
+install: composer update --prefer-source --no-interaction -v
 
 script: vendor/bin/phpunit --debug -c phpunit.xml --coverage-clover=coverage.clover
