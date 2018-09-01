@@ -5,7 +5,7 @@ use Absszero\ErrorReporting;
 class ErrorReportingTest extends PHPUnit_Framework_TestCase
 {
     public static $config = [
-        'error_reporting.log_name' => 'name',
+        'error_reporting.logName' => 'name',
         'error_reporting.LoggingClient' => [
             'projectId' => 'projectId',
         ],
