@@ -41,7 +41,7 @@ GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
 
 ## History
 
-TODO: Write history
+* 2018-09-05 Support Laravel 5.7
 
 ## Credits
 
