@@ -9,14 +9,23 @@ Laravel `5.1` ~ `5.7`
 ## Installation
 
 1. `composer require absszero/laravel-stackdriver-error-reporting`
-2. `php artisan vendor:publish --provider=Absszero\ErrorReportingServiceProvider`
+2. edit `config/app.php`
+    ```php
+    <?php
+    ...
+    'providers' => [
+        Absszero\ErrorReportingServiceProvider::class,
+    ```        
+3. `php artisan vendor:publish --provider=Absszero\ErrorReportingServiceProvider`
 
 ## Configuration
 1. get [service account credentials](https://cloud.google.com/docs/authentication/getting-started) and edit `.env`
 ```
 GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
 ```
-2. edit `app/Exceptions/Handler.php`
+
+
+3. edit `app/Exceptions/Handler.php`
 
     ```php
     <?php
@@ -25,7 +34,7 @@ GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
             parent::report($exception);
 
             if ($this->shouldReport($exception)) {
-                (new \Absszero\ErrorReporting::class)->report($exception);
+                (new \Absszero\ErrorReporting)->report($exception);
             }
         }
     ```
