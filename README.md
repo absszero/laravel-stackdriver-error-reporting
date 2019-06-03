@@ -50,6 +50,7 @@ GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
 
 ## History
 
+* 2019-06-03 Support Laravel 5.8
 * 2018-09-05 Support Laravel 5.7
 
 ## Credits
