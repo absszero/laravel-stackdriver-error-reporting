@@ -4,7 +4,7 @@
 
 ## Requirements
 
-Laravel `5.1` ~ `5.7`
+Laravel `5.1` ~ `5.8`
 
 ## Installation
 
