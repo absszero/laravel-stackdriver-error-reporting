@@ -22,18 +22,15 @@ class ErrorReportingTest extends TestCase
         ]
     ];
 
-    protected function setUp()
+    /** @test */
+    public function testReport()
     {
         if (! function_exists('config')) {
             function config($key = null) {
                 return ErrorReportingTest::$config[$key];
             }
         }
-    }
 
-    /** @test */
-    public function testReport()
-    {
         $errorReporting = new ErrorReporting;
         $errorReporting->setReportCallable([$this, 'mockReportCallable']);
         $errorReporting->report(new Exception('test'));
