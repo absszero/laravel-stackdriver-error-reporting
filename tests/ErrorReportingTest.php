@@ -22,7 +22,7 @@ class ErrorReportingTest extends TestCase
         ]
     ];
 
-    public function setUp()
+    protected function setUp()
     {
         if (! function_exists('config')) {
             function config($key = null) {

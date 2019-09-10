@@ -4,7 +4,7 @@
 
 ## Requirements
 
-Laravel `5.1` ~ `5.8`
+Laravel `5.1` ~ `6.0`
 
 ## Installation
 
@@ -15,7 +15,7 @@ Laravel `5.1` ~ `5.8`
     ...
     'providers' => [
         Absszero\ErrorReportingServiceProvider::class,
-    ```        
+    ```
 3. `php artisan vendor:publish --provider=Absszero\ErrorReportingServiceProvider`
 
 ## Configuration
@@ -47,11 +47,6 @@ GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-
-* 2019-06-03 Support Laravel 5.8
-* 2018-09-05 Support Laravel 5.7
 
 ## Credits
 
