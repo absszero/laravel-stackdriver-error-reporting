@@ -1,8 +1,9 @@
 <?php
 
 use Absszero\ErrorReporting;
+use PHPUnit\Framework\TestCase;
 
-class ErrorReportingTest extends PHPUnit_Framework_TestCase
+class ErrorReportingTest extends TestCase
 {
     public static $config = [
         'error_reporting.logName' => 'name',

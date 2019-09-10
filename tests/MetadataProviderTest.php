@@ -1,8 +1,9 @@
 <?php
 
 use Absszero\MetadataProvider;
+use PHPUnit\Framework\TestCase;
 
-class MetadataProviderTest extends PHPUnit_Framework_TestCase
+class MetadataProviderTest extends TestCase
 {
     /** @test */
     public function testConstruct()
