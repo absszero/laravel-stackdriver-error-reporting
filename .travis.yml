@@ -29,7 +29,10 @@ matrix:
       env: ILLUMINATE_VERSION=5.8.*
     - php: 7.2.0
       env: ILLUMINATE_VERSION=6.0.*
-
+    - php: 7.2.0
+      env: ILLUMINATE_VERSION=6.2.*
+    - php: 7.2.0
+      env: ILLUMINATE_VERSION=6.4.*
 
 before_install:
   - composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update -v
