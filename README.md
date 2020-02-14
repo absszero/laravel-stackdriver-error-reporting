@@ -16,7 +16,7 @@ Laravel `5.1` ~ `6.4`
     'providers' => [
         Absszero\ErrorReportingServiceProvider::class,
     ```
-3. `php artisan vendor:publish --provider=Absszero\ErrorReportingServiceProvider`
+3. `php artisan vendor:publish --provider="Absszero\ErrorReportingServiceProvider"`
 
 ## Configuration
 1. get [service account credentials](https://cloud.google.com/docs/authentication/getting-started) and edit `.env`
