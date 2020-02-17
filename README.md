@@ -9,7 +9,9 @@ Laravel `5.1` ~ `6.4`
 ## Installation
 
 1. `composer require absszero/laravel-stackdriver-error-reporting`
-2. edit `config/app.php`
+2. This package provides Package Auto-Discovery.
+
+    For Laravel versions before 5.5, you need to add the ServiceProvider in `config/app.php`
     ```php
     <?php
     ...
@@ -19,14 +21,14 @@ Laravel `5.1` ~ `6.4`
 3. `php artisan vendor:publish --provider=Absszero\ErrorReportingServiceProvider`
 
 ## Configuration
-1. get [service account credentials](https://cloud.google.com/docs/authentication/getting-started) and edit `.env`
-```
-GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
-```
-
-
+1. get [service account credentials](https://cloud.google.com/docs/authentication/getting-started) 
+    with the role `logging.logWriter` ([docs](https://cloud.google.com/error-reporting/docs/iam?hl=en#iam_roles))
+2. store the key file in your project directory and refer to it in your `.env` like this:
+    ```
+    GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
+    ```
+   
 3. edit `app/Exceptions/Handler.php`
-
     ```php
     <?php
         public function report(Exception $exception)
@@ -38,7 +40,6 @@ GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
             }
         }
     ```
-
 
 ## Contributing
 
