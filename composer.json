@@ -5,7 +5,7 @@
     "require": {
         "php": ">=5.5",
         "illuminate/support": "~5.1 || ^6.0",
-        "google/cloud-error-reporting": "^0.11"
+        "google/cloud-error-reporting": "^0.16"
     },
 
     "license": "MIT",
