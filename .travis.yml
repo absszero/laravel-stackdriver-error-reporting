@@ -35,6 +35,12 @@ matrix:
       env: ILLUMINATE_VERSION=6.4.*
     - php: 7.2.5
       env: ILLUMINATE_VERSION=7.0.*
+    - php: 7.2.5
+      env: ILLUMINATE_VERSION=7.3.*
+    - php: 7.2.5
+      env: ILLUMINATE_VERSION=7.6.*
+    - php: 7.2.5
+      env: ILLUMINATE_VERSION=7.12.*
 
 
 before_install:
