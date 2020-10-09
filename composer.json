@@ -4,8 +4,8 @@
     "type": "laravel",
     "require": {
         "php": ">=5.5",
-        "illuminate/support": "~5.1 || ^6.0 || ^7.0",
-        "google/cloud-error-reporting": "^0.17"
+        "illuminate/support": "~5.1 || ^6.0 || ^7.0 || ^8.0",
+        "google/cloud-error-reporting": "^0.18"
     },
 
     "license": "MIT",
