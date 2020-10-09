@@ -21,20 +21,22 @@ Laravel `5.1` ~ `8.x`
 3. `php artisan vendor:publish --provider="Absszero\ErrorReportingServiceProvider"`
 
 ## Configuration
-1. get [service account credentials](https://cloud.google.com/docs/authentication/getting-started)
+1. Get [service account credentials](https://cloud.google.com/docs/authentication/getting-started)
     with the role `logging.logWriter` ([docs](https://cloud.google.com/error-reporting/docs/iam?hl=en#iam_roles))
-2. store the key file in your project directory and refer to it in your `.env` like this:
+    
+2. Store the key file in your project directory and refer to it in your `.env` like this:
     ```
     GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
     ```
 
-3. edit `app/Exceptions/Handler.php`
+3. Edit `app/Exceptions/Handler.php`. 
+    For PHP version before 7, replace `\Throwable` with `\Exception`.
+    
     ```php
     <?php
-        public function report(Exception $exception)
-        {
+        public function report(\Throwable $exception)
+    {
             parent::report($exception);
-
             if ($this->shouldReport($exception)) {
                 (new \Absszero\ErrorReporting)->report($exception);
             }
