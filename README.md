@@ -30,7 +30,8 @@ Laravel `5.1` ~ `9.x`
     ```
 
 3. Edit `app/Exceptions/Handler.php`.
-    For Laravel 9 and after versions.
+   
+   For Laravel 9 and after versions.
 
     ```php
     <?php
