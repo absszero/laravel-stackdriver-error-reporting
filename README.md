@@ -4,7 +4,7 @@
 
 ## Requirements
 
-Laravel `5.1` ~ `8.x`
+Laravel `5.1` ~ `9.x`
 
 ## Installation
 
@@ -23,25 +23,39 @@ Laravel `5.1` ~ `8.x`
 ## Configuration
 1. Get [service account credentials](https://cloud.google.com/docs/authentication/getting-started)
     with the role `logging.logWriter` ([docs](https://cloud.google.com/error-reporting/docs/iam?hl=en#iam_roles))
-    
+
 2. Store the key file in your project directory and refer to it in your `.env` like this:
     ```
     GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
     ```
 
-3. Edit `app/Exceptions/Handler.php`. 
+3. Edit `app/Exceptions/Handler.php`.
+    For Laravel 9 and after versions.
+
+    ```php
+    <?php
+        public function register()
+        {
+            $this->reportable(function (Throwable $e) {
+                (new \Absszero\ErrorReporting)->report($e);
+            });
+        }
+    ```
+
     For PHP version before 7, replace `\Throwable` with `\Exception`.
     
     ```php
     <?php
         public function report(\Throwable $exception)
-    {
+        {
             parent::report($exception);
             if ($this->shouldReport($exception)) {
                 (new \Absszero\ErrorReporting)->report($exception);
             }
         }
     ```
+
+
 
 ## Contributing
 
