@@ -9,7 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ["5.6.4", "5.1.*"]
+        version:
+          - ["5.6.4", "5.1.*"]
           #- [5.6.4, 5.2.*]
           #- [5.6.4, 5.3.*]
           #- [5.6.4, 5.4.*]
@@ -27,9 +28,6 @@ jobs:
           #- [7.3, 8.*]
           #- [8.0, 9.*]
           #- [8.1, 10.*]
-
-    name: P${{ matrix.version.0 }} - I${{ matrix.version.1 }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
