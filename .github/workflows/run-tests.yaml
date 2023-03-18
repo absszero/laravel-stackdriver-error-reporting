@@ -72,8 +72,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "illuminate/support:${{ matrix.illuminate }}" --no-interaction --no-update
-          composer update --prefer-source --no-interaction --no-suggest
+          composer require "illuminate/support:${{ matrix.illuminate }}" --no-interaction --no-update --no-plugins
+          composer update --prefer-source --no-interaction --no-suggest --no-plugins
       - name: Execute tests
-        run: vendor/bin/phpunit --debug -c phpunit.xml
+        run: vendor/bin/phpunit -c phpunit.xml
 
