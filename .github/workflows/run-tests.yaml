@@ -46,6 +46,9 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
         shell: bash
 
+      - name: Echo composer cache directory
+        run: echo ${{ steps.env-setup.outputs.dir }}
+
       - name: Cache composer dependencies
         uses: actions/cache@v3
         with:
