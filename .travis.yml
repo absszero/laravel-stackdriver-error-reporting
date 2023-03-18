@@ -43,6 +43,8 @@ matrix:
       env: ILLUMINATE_VERSION=8.*
     - php: 8.0
       env: ILLUMINATE_VERSION=9.*
+    - php: 8.1
+      env: ILLUMINATE_VERSION=10.*
 
 
 before_install:
