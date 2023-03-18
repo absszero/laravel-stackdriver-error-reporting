@@ -1,6 +1,7 @@
 # Stackdriver Error Reporting for Laravel
 
-[![Build Status](https://travis-ci.org/absszero/laravel-stackdriver-error-reporting.svg?branch=master)](https://travis-ci.org/absszero/laravel-stackdriver-error-reporting)
+![actions/workflows/run-tests.yaml](https://github.com/absszero/laravel-stackdriver-error-reporting/actions/workflows/run-tests.yaml/badge.svg)
+
 
 ## Requirements
 
