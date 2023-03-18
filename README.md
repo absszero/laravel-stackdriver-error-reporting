@@ -4,7 +4,7 @@
 
 ## Requirements
 
-Laravel `5.1` ~ `9.x`
+Laravel `5.1` ~ `10.x`
 
 ## Installation
 
@@ -30,7 +30,7 @@ Laravel `5.1` ~ `9.x`
     ```
 
 3. Edit `app/Exceptions/Handler.php`.
-   
+
    For Laravel 9 and after versions.
 
     ```php
@@ -44,7 +44,7 @@ Laravel `5.1` ~ `9.x`
     ```
 
     For PHP version before 7, replace `\Throwable` with `\Exception`.
-    
+
     ```php
     <?php
         public function report(\Throwable $exception)
