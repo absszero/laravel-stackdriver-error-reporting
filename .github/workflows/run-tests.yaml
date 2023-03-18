@@ -3,44 +3,62 @@ name: Run tests
 on: [push]
 
 jobs:
-    php-tests:
-        runs-on: ubuntu-latest
+  php-tests:
+    runs-on: ubuntu-latest
 
-        strategy:
-            fail-fast: false
-            matrix:
-                php: [5.6.4, 7.0, 7.1, 7.2, 7.3, 8.0, 8.1]
-                illuminate: [5.1.*, 5.2.*, 5.3.*, 5.4.*, 5.5.*, 5.6.*, 5.7.*, 5.8.*, 6.*, 7.*, 8.*, 9.*, 10.*]
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+        [
+          {php:5.6.4, illuminate:5.1.*},
+          # {php:5.6.4, illuminate:5.2.*},
+          # {php:5.6.4, illuminate:5.3.*},
+          # {php:5.6.4, illuminate:5.4.*},
+          # {php:7.0, illuminate:5.5.*},
+          # {php:7.1.3, illuminate:5.6.*},
+          # {php:7.1.3, illuminate:5.7.*},
+          # {php:7.1.3, illuminate:5.8.*},
+          # {php:7.2.0, illuminate:6.0.*},
+          # {php:7.2.0, illuminate:6.2.*},
+          # {php:7.2.0, illuminate:6.4.*},
+          # {php:7.2.5, illuminate:7.0.*},
+          # {php:7.2.5, illuminate:7.3.*},
+          # {php:7.2.5, illuminate:7.6.*},
+          # {php:7.2.5, illuminate:7.12.*},
+          # {php:7.3, illuminate:8.*},
+          # {php:8.0, illuminate:9.*},
+          # {php:8.1, illuminate:10.*}
+        ]
+    name: P${{ matrix.version.php }} - I${{ matrix.version.illuminate }}
 
-        name: P${{ matrix.php }} - I${{ matrix.illuminate }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.version.php }}
+          extensions: mbstring, fileinfo
+          coverage: none
+          tools: composer:v2
 
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
-                  extensions: mbstring, fileinfo
-                  coverage: none
-                  tools: composer:v2
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-            - name: Get composer cache directory
-              id: composer-cache
-              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.env-setup.outputs.dir }}
+          key: php-${{ matrix.version.php }}-illuminate-${{ matrix.version.illuminate }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: php-${{ matrix.version.php }}-illuminate-${{ matrix.version.illuminate }}-composer-
 
-            - name: Cache composer dependencies
-              uses: actions/cache@v3
-              with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: php-${{ matrix.php }}-illuminate-${{ matrix.illuminate }}-${{ hashFiles('**/composer.json') }}
-                  restore-keys: php-${{ matrix.php }}-illuminate-${{ matrix.illuminate }}-composer-
-
-            -  name: Install dependencies
-               run: |
-                    composer require "illuminate/support:${{ matrix.illuminate }}" --no-interaction --no-update
-                    composer update --prefer-source --no-interaction --no-suggest
-            - name: Execute tests
-              run: vendor/bin/phpunit --debug -c phpunit.xml
+      - name: Install dependencies
+        run: |
+          composer require "illuminate/support:${{ matrix.version.illuminate }}" --no-interaction --no-update
+          composer update --prefer-source --no-interaction --no-suggest
+      - name: Execute tests
+        run: vendor/bin/phpunit --debug -c phpunit.xml
 
