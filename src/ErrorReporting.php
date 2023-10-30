@@ -11,7 +11,7 @@ class ErrorReporting
 
     public function __construct($metadataProvider = null)
     {
-        if (!config('error_reporting.enable')) {
+        if (!config('error_reporting.enable', true)) {
             return $this;
         }
 
@@ -38,7 +38,7 @@ class ErrorReporting
 
     public function report($exception)
     {
-        if (!config('error_reporting.enable')) {
+        if (!config('error_reporting.enable', true)) {
             return;
         }
 
