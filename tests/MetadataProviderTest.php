@@ -1,4 +1,5 @@
 <?php
+namespace Tests;
 
 use Absszero\MetadataProvider;
 use PHPUnit\Framework\TestCase;

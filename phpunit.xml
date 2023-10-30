@@ -5,8 +5,7 @@
   processIsolation="false"
   stopOnFailure="false"
   xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
-  cacheDirectory=".phpunit.cache"
-  backupStaticProperties="false">
+  >
   <coverage>
     <include>
       <directory suffix=".php">app/</directory>

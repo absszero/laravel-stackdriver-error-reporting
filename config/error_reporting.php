@@ -1,6 +1,8 @@
 <?php
 
 return [
+    // Enable error reporting
+    'enable' => env('ERROR_REPORTING', true),
     'logName' => config('app.name'),
     'serviceId' => config('app.name'),
     'versionId' => null,

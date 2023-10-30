@@ -11,6 +11,14 @@ class ErrorReporting
 
     public function __construct($metadataProvider = null)
     {
+        if (!config('error_reporting.enable')) {
+            return $this;
+        }
+
+        if (Bootstrap::$psrLogger) {
+            return $this;
+        }
+
         $logName = config('error_reporting.logName', Bootstrap::DEFAULT_LOGNAME);
         $loggingClient = new LoggingClient(config('error_reporting.LoggingClient'));
 
@@ -30,6 +38,10 @@ class ErrorReporting
 
     public function report($exception)
     {
+        if (!config('error_reporting.enable')) {
+            return;
+        }
+
         call_user_func($this->reportCallable, $exception);
     }
 
