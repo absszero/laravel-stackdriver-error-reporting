@@ -25,19 +25,15 @@ class ErrorReportingTest extends TestCase
         ]
     ];
 
-    public function setUp() : void
+    public function testReport()
     {
-        parent::setUp();
         if (! function_exists('config')) {
             function config($key = null)
             {
                 return \Illuminate\Support\Arr::get(['error_reporting' => ErrorReportingTest::$config], $key);
             }
         }
-    }
 
-    public function testReport()
-    {
         $errorReporting = new ErrorReporting;
         $errorReporting->setReportCallable([$this, 'mockReportCallable']);
         $errorReporting->report(new Exception('test'));
