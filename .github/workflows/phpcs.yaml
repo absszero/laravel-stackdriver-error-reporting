@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - run: |
           curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
