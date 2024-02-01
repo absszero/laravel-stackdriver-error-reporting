@@ -1,4 +1,4 @@
-name: Run tests
+name: Run lint
 
 on: pull_request
 
@@ -8,11 +8,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0 # important!
 
-      - name: Run PHPCS inspection
-        uses: rtCamp/action-phpcs-code-review@v3
-        env:
-          GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-          SKIP_FOLDERS: "config,.github"
-          PHPCS_PHP_VERSION: 7.4
+      # we may use whatever way to install phpcs, just specify the path on the next step
+      # however, curl seems to be the fastest
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          php phpcs.phar --version
+
+      - uses: thenabeel/action-phpcs@v8
+        with:
+          phpcs_path: php phpcs.phar
+          standard: phpcs.xml
