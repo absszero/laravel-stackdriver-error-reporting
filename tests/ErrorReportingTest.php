@@ -6,7 +6,6 @@ use Exception;
 use Absszero\ErrorReporting;
 use PHPUnit\Framework\TestCase;
 
-
 class ErrorReportingTest extends TestCase
 {
     public static $config = [
