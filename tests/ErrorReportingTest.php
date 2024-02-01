@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use Exception;
 use Absszero\ErrorReporting;
 use PHPUnit\Framework\TestCase;
@@ -27,14 +29,9 @@ class ErrorReportingTest extends TestCase
 
     public function testReport()
     {
-        if (! function_exists('config')) {
-            function config($key = null)
-            {
-                return \Illuminate\Support\Arr::get(['error_reporting' => ErrorReportingTest::$config], $key);
-            }
-        }
+        require_once __DIR__ . '/helpers.php';
 
-        $errorReporting = new ErrorReporting;
+        $errorReporting = new ErrorReporting();
         $errorReporting->setReportCallable([$this, 'mockReportCallable']);
         $errorReporting->report(new Exception('test'));
     }
