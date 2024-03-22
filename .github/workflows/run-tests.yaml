@@ -1,9 +1,12 @@
 name: Run tests
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    paths:
+      - "**.php"
+      - "composer.json"
+      - ".github/workflows/run-tests.yaml"
+
 
 jobs:
   php-tests:
@@ -49,6 +52,8 @@ jobs:
             illuminate: 9.*
           - php: 8.1
             illuminate: 10.*
+          - php: 8.2
+            illuminate: 11.*
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -79,4 +84,3 @@ jobs:
           composer update --prefer-source --no-interaction --no-suggest --no-plugins
       - name: Execute tests
         run: vendor/bin/phpunit -c phpunit.xml
-

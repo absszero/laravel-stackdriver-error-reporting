@@ -13,9 +13,6 @@
         "illuminate/support": ">=5.1",
         "google/cloud-error-reporting": "^0.19"
     },
-    "conflict": {
-        "psr/log": ">=3"
-    },
     "autoload": {
         "psr-4": {
             "Absszero\\": "src/"

@@ -5,7 +5,7 @@
 
 ## Requirements
 
-Laravel `5.1` ~ `10.x`
+Laravel `5.1` ~ `11.x`
 
 ## Installation
 
@@ -30,7 +30,17 @@ Laravel `5.1` ~ `10.x`
     GOOGLE_APPLICATION_CREDENTIALS=/My_Authentication.json
     ```
 
-3. Edit `app/Exceptions/Handler.php`.
+3. For Laravel 11 and after versions. Edit `bootstrap/app.php`.
+
+    ```php
+        ->withExceptions(function (Exceptions $exceptions) {
+            $exceptions->report(function (\Throwable $e) {
+                (new \Absszero\ErrorReporting)->report($e);
+            });
+    ```
+
+
+3. For Laravel 10 and before versions. Edit `app/Exceptions/Handler.php`.
 
    For Laravel 9 and after versions.
 
