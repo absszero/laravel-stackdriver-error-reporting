@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - "**.php"
-      - "phpcs.xml"
-      - ".github/workflows/phpcs.yaml"
+      - "composer.json"
+      - ".github/workflows/run-tests.yaml"
 
 
 jobs:
@@ -84,4 +84,3 @@ jobs:
           composer update --prefer-source --no-interaction --no-suggest --no-plugins
       - name: Execute tests
         run: vendor/bin/phpunit -c phpunit.xml
-
