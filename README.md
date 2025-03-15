@@ -10,6 +10,8 @@ Laravel `5.1` ~ `12.x`
 ## Installation
 
 1. `composer require absszero/laravel-stackdriver-error-reporting`
+
+    (For PHP7 and before version. please install `v1.8.0`)
 2. This package provides Package Auto-Discovery.
 
     For Laravel versions before 5.5, you need to add the ServiceProvider in `config/app.php`
