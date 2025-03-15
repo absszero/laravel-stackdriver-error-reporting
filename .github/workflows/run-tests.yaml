@@ -54,9 +54,11 @@ jobs:
             illuminate: 10.*
           - php: 8.2
             illuminate: 11.*
+          - php: 8.2
+            illuminate: 12.*
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
