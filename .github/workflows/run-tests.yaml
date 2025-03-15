@@ -83,6 +83,6 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "illuminate/support:${{ matrix.illuminate }}" --no-interaction --no-update --no-plugins
-          composer update --prefer-source --no-interaction --no-suggest --no-plugins
+          composer update --prefer-source --no-interaction --no-plugins
       - name: Execute tests
         run: vendor/bin/phpunit -c phpunit.xml
